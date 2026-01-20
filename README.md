@@ -1,5 +1,5 @@
 
-# 0. Overview
+# Overview
 This template and guidance describes how to use git and github for version control to make collaboration on complicated coding tasks easier. In the past, we have used dropbox to collaborate on do files. This approach works Ok for simple coding but gets messy for more complicated tasks because a) you can't easily tell what has changed in a do file or who made the change, b) you can't easily experiment with code changes (i.e. if you want to test out a new approach you need to create a new do file or else use the main do file and remember to roll back any changes if things don't work out), and c) if two people are working on a file at the same time (or one person forgets to save and close a file) you can get conflicted copies of a file on Dropbox. Git takes some up front time to learn but makes collaborating on files much easier. In addition, this approach makes it much easier to use tools like Claude Code for coding. 
 
 # 1. High-level overview of this approach
