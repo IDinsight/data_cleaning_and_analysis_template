@@ -1,0 +1,56 @@
+# Data folder (symlink to Dropbox)
+Data/
+
+# Data files
+*.csv
+*.xlsx
+*.xls
+*.xlsm
+*.xlsb
+*.json
+*.xml
+*.parquet
+*.feather
+*.sav
+*.sas7bdat
+*.dbf
+*.tab
+*.tsv
+
+# Stata
+*.dta
+*.log
+*.smcl
+*.gph
+*.stpr
+*.sthlp
+
+# R
+.Rhistory
+.Rdata
+.RDataTmp
+.Ruserdata
+*.Rproj.user/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sensitive files
+.env
+*.credentials
+credentials.json
