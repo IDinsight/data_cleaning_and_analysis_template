@@ -54,3 +54,6 @@ Thumbs.db
 .env
 *.credentials
 credentials.json
+
+# Claude
+.claude/
