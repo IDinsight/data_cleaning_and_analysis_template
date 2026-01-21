@@ -5,7 +5,27 @@ This template and guidance describes how to use git and github for version contr
 # 1. High-level overview of this approach
 With the approach outlined here, all data still lives on Dropbox but all do files (and R and python scripts if you are using them) are managed by git and github.
 
-Staff make changes to code locally on their laptop. Once they get things working locally, they "push" (i.e. share) these changes to github. Another staff member reviews these changes and, if they look Ok, "merges" them in with the rest of the codebase. Other staff members then "pull" (i.e. copy) these code changes to their local laptops. 
+Staff make changes to code locally on their laptop. Once they get things working locally, they "push" (i.e. share) these changes to github. Another staff member reviews these changes and, if they look Ok, "merges" them in with the rest of the codebase. Other staff members then "pull" (i.e. copy) these code changes to their local laptops.
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                         YOUR LOCAL LAPTOP                               │
+│  ┌──────────────────────────────────┐                                   │
+│  │         Project Folder           │                                   │
+│  │  ┌────────────┐  ┌────────────┐  │                                   │
+│  │  │  Scripts/  │  │   Data/    │──────> Symlink to Dropbox            │
+│  │  │  (git)     │  │            │  │                                   │
+│  │  └────────────┘  └────────────┘  │                                   │
+│  └──────────────────────────────────┘                                   │
+└─────────────────────────────────────────────────────────────────────────┘
+        │                                              │
+        │ push/pull code                               │ sync automatically
+        ▼                                              ▼
+┌───────────────────┐                      ┌───────────────────┐
+│      GitHub       │                      │      Dropbox      │
+│  (code storage)   │                      │  (data storage)   │
+└───────────────────┘                      └───────────────────┘
+``` 
 
 
 # 2. When to use this template and approach
@@ -52,6 +72,7 @@ Follow the prompts, selecting "GitHub.com", "HTTPS", and "Login with a web brows
 The best way to learn git is to use ChatGPT with "study and learn" mode turned on and ask it to walk you through a hands-on intro to git and the feature branch workflow. It will guide you through the concepts interactively and answer your questions as you go.
 
 If you prefer self-directed resources, we also recommend:
+- [Git and GitHub Introduction](https://docs.google.com/presentation/d/1C-TI60Mhdp25N2Qre1sCUA477hPKp4XcCOLHC4blF50/edit?usp=sharing) - IDinsight slide deck covering the basics
 - [GitHub's Git Handbook](https://guides.github.com/introduction/git-handbook/) - A 10-minute read covering the basics
 - [Git Basics Video](https://git-scm.com/video/what-is-version-control) - Short video introduction
 - Practice with [Learn Git Branching](https://learngitbranching.js.org/) - An interactive tutorial
@@ -99,6 +120,36 @@ We recommend using the **feature branch workflow**. This means:
 - The `main` branch always contains working, reviewed code
 - All new work happens on separate "feature branches"
 - Changes are reviewed via pull requests before being merged into `main`
+
+```
+main         ●─────────────────────────────●─────────────────> (always stable)
+              \                           /
+               \  create branch          / merge after review
+                \                       /
+feature          ●────●────●────●──────●
+                      │    │    │      │
+                    commit changes   push & create PR
+```
+
+**The workflow in 5 steps:**
+
+```
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│   1. BRANCH     │     │    2. CODE      │     │   3. COMMIT     │
+│                 │     │                 │     │                 │
+│  Create new     │────>│  Make changes   │────>│  Save progress  │
+│  feature branch │     │  locally        │     │  with commits   │
+└─────────────────┘     └─────────────────┘     └─────────────────┘
+                                                        │
+                        ┌───────────────────────────────┘
+                        ▼
+┌─────────────────┐     ┌─────────────────┐
+│   5. MERGE      │     │   4. REVIEW     │
+│                 │     │                 │
+│  Merge PR into  │<────│  Push & create  │
+│  main branch    │     │  pull request   │
+└─────────────────┘     └─────────────────┘
+```
 
 ## Day-to-day workflow
 

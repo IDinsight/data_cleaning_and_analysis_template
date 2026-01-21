@@ -139,3 +139,88 @@ egen std_score = std(total_score)
 	// Useful for: Comparing across different scales
 
 label var std_score "Standardized total score"
+
+
+*---------------------------------------------------*
+* 7.5 Create consumption measures
+*
+* PURPOSE: Aggregate household consumption for welfare analysis
+*---------------------------------------------------*
+
+* Total household consumption (sum of components)
+egen consumption_total = rowtotal(food_exp nonfood_exp housing_exp)
+	// food_exp = monthly food expenditure
+	// nonfood_exp = clothing, transport, education, etc.
+	// housing_exp = rent, utilities
+
+label var consumption_total "Total monthly consumption"
+
+* Per capita consumption
+gen consumption_pc = consumption_total / hh_size
+	// Divides by household size
+	// Assumes equal sharing within household
+
+label var consumption_pc "Per capita monthly consumption"
+
+* Adult equivalent consumption (adjusts for age/needs)
+gen consumption_ae = consumption_total / adult_equiv
+	// adult_equiv = adult equivalent scale
+	// Accounts for: children need less, economies of scale
+
+label var consumption_ae "Adult equivalent monthly consumption"
+
+* Food share (Engel's law indicator)
+gen food_share = food_exp / consumption_total if consumption_total > 0
+	// Higher food share = poorer household
+	// Engel's law: food share decreases as income rises
+
+label var food_share "Share of consumption spent on food"
+
+* Log consumption (for regressions)
+gen ln_consumption_pc = ln(consumption_pc) if consumption_pc > 0
+	// Log transformation for:
+	// - Normality in regressions
+	// - Coefficients as % changes
+
+label var ln_consumption_pc "Log per capita consumption"
+
+
+*---------------------------------------------------*
+* 7.6 Create asset measures
+*
+* PURPOSE: Measure household wealth via asset ownership
+*---------------------------------------------------*
+
+* Simple asset count
+egen asset_count = rowtotal(has_radio has_tv has_fridge has_bike has_moto has_car)
+	// Each has_* variable = 1 if owns, 0 if not
+	// Range: 0 to 6
+
+label var asset_count "Number of assets owned (0-6)"
+
+* Weighted asset index (simple weights)
+gen asset_index_simple = has_radio*1 + has_tv*2 + has_fridge*3 + ///
+	has_bike*1 + has_moto*3 + has_car*5
+	// Weights reflect relative value/rarity
+	// Higher weight = more valuable asset
+
+label var asset_index_simple "Asset index (simple weights)"
+
+* PCA-based asset index (more rigorous)
+pca has_radio has_tv has_fridge has_bike has_moto has_car
+	// Principal Component Analysis
+	// Creates weights based on asset correlations
+
+predict asset_index_pca, score
+	// First principal component = wealth index
+	// Mean = 0, higher = wealthier
+
+label var asset_index_pca "Asset index (PCA-based)"
+
+* Asset quintiles
+xtile asset_quintile = asset_index_pca, nquantiles(5)
+
+label define asset_quintile 1 "Poorest" 2 "Poor" 3 "Middle" ///
+	4 "Rich" 5 "Richest"
+label values asset_quintile asset_quintile
+label var asset_quintile "Asset wealth quintile"
