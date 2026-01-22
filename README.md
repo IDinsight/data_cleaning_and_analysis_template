@@ -69,21 +69,49 @@ Follow the prompts, selecting "GitHub.com", "HTTPS", and "Login with a web brows
 
 ## Learn git basics
 
-The best way to learn git is to use ChatGPT with "study and learn" mode turned on and ask it to walk you through a hands-on intro to git and the feature branch workflow. It will guide you through the concepts interactively and answer your questions as you go.
+If you are completely new to git we recommend asking ChatGPT with the "study and learn" mode turned on to create a basic hands-on tutorial for you. A prompt similar to "Please put together a basic, hands-on tutorial for git and github that assumes no knowledge of git or the command line. I am a complete beginner. I use a Mac." may be useful. *Remember to turn on 'study and learn' mode.* With this mode turned on ChatGPT will gently guide you through learning git. Without it turned on you will get a wall of text. 
+
 
 If you prefer self-directed resources, we also recommend:
-- [Git and GitHub Introduction](https://docs.google.com/presentation/d/1C-TI60Mhdp25N2Qre1sCUA477hPKp4XcCOLHC4blF50/edit?usp=sharing) - IDinsight slide deck covering the basics
+- [Git and GitHub Introduction by Sid](https://docs.google.com/presentation/d/1C-TI60Mhdp25N2Qre1sCUA477hPKp4XcCOLHC4blF50/edit?usp=sharing) - IDinsight slide deck covering the basics
+- [Git intro by Mico](https://docs.google.com/presentation/d/17dK4rbVGmkRe2k1R4ZtA_3BWTBjdT1yZl29HixR9fF0/edit?slide=id.g255e0a95d93_0_193#slide=id.g255e0a95d93_0_193) - An intro slide created by Mico. 
 - [GitHub's Git Handbook](https://guides.github.com/introduction/git-handbook/) - A 10-minute read covering the basics
 - [Git Basics Video](https://git-scm.com/video/what-is-version-control) - Short video introduction
 - Practice with [Learn Git Branching](https://learngitbranching.js.org/) - An interactive tutorial
 
-Key concepts to understand:
-- **Repository (repo)**: A folder containing your code and its entire version history
-- **Commit**: A snapshot of your code at a point in time
-- **Branch**: A parallel version of your code where you can make changes without affecting the main codebase
-- **Push**: Upload your local commits to GitHub
-- **Pull**: Download commits from GitHub to your local machine
-- **Merge**: Combine changes from one branch into another
+Git is pretty complicated and allows you to do a lot. Don't attempt to learn it all in one go. Instead, we recommend starting with the basic concepts and commands listed below. These are enough to get you up and running with git. 
+
+**Key basic concepts to understand:**
+
+- **Working directory**: The folder on your computer where you actively edit files. When you open a do file and make changes, those changes exist only in your working directory. Git can see that something changed, but it won't track or save those changes until you explicitly tell it to.
+
+- **Staging area**: A holding area where you prepare changes before permanently saving them. When you run `git add`, you're moving changes from your working directory to the staging area. This lets you selectively choose which changes to include in your next commit—you might have edited five files but only want to save changes to two of them.
+
+- **Repository (repo)**: The hidden `.git` folder that stores your entire version history. When you run `git commit`, your staged changes are permanently saved to the repository as a new snapshot. You can always go back to any previous commit, so nothing is ever truly lost once it's been committed.
+
+- **Commit**: A snapshot of your code at a specific point in time, like a save point in a video game. Each commit has a unique ID and a message describing what changed. You can view the history of all commits, compare commits to see what changed, and restore your code to any previous commit.
+
+- **Branch**: A parallel version of your code where you can experiment without affecting the main codebase. Think of it like making a copy of a document to try out some edits—if you like them, you can merge them back; if not, you can discard the branch. The `main` branch typically contains the stable, reviewed version of your code.
+
+- **Remote**: A version of your repository hosted on GitHub (or another server) that serves as a central backup and collaboration point. When you `push`, you upload your commits to the remote; when you `pull`, you download commits others have pushed. This is how team members share code with each other.
+
+The flow of changes: **Working Directory** → `git add` → **Staging Area** → `git commit` → **Repository**
+
+**Basic commands to learn first:**
+- `git status` - See which files have changed and what's staged for commit
+- `git add` - Stage changes to be included in your next commit
+- `git commit` - Save staged changes as a new commit with a message
+- `git push` - Upload your local commits to GitHub
+- `git pull` - Download commits from GitHub to your local machine
+- `git switch` - Switch between branches or create new ones
+- `git log` - View the history of commits
+
+**Commands to learn later:**
+- `git merge` - Combine changes from one branch into another
+- `git stash` - Temporarily save uncommitted changes to work on something else
+- `git diff` - See exactly what changed in files
+- `git reset` - Undo commits or unstage files
+- `git rebase` - Reapply commits on top of another branch (advanced)
 
 
 
