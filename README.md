@@ -50,7 +50,8 @@ The following tasks must be performed once prior to using this template.  You on
 ## Create a GitHub account and get added to the IDinsight organization
 
 1. Go to [github.com](https://github.com) and create a free account if you don't already have one.
-2. Ask your manager or a current member of the IDinsight GitHub organization to add you. They can do this by going to the [IDinsight organization settings](https://github.com/orgs/IDinsight/people) and clicking "Invite member."
+2. Set up two-factor authentication (2FA) on your GitHub account. Go to Settings > Password and authentication > Enable two-factor authentication. This is required for the IDinsight organization.
+3. Ask your manager or a current member of the IDinsight GitHub organization to add you. They can do this by going to the [IDinsight organization settings](https://github.com/orgs/IDinsight/people) and clicking "Invite member."
 
 ## Configure git
 
@@ -241,3 +242,22 @@ feature          ●────●────●────●─────
 - **Pull before starting**: Always pull the latest `main` before creating a new branch.
 - **Don't commit data**: Only commit code files. Data should stay on Dropbox.
 - **Ask for help**: Git can be confusing at first. Don't hesitate to ask a colleague if you get stuck.
+
+# 6. Troubleshooting
+
+## Git opened a text editor (nano, vim, etc.) and I don't know how to exit
+
+When you run certain git commands (like `git commit` without the `-m` flag, or during a merge conflict), git may open a command-line text editor for you to enter a message. This can be confusing if you're not familiar with these editors.
+
+**If you see nano** (a simple editor with commands listed at the bottom like `^X Exit`):
+- To save and exit: Press `Ctrl+X`, then `Y` to confirm, then `Enter`
+- To exit without saving: Press `Ctrl+X`, then `N`
+
+**If you see vim** (a more complex editor, often shows `~` symbols on empty lines):
+- To save and exit: Press `Esc`, then type `:wq` and press `Enter`
+- To exit without saving: Press `Esc`, then type `:q!` and press `Enter`
+
+**To avoid this in the future**, always use the `-m` flag with your commit message:
+```
+git commit -m "Your commit message here"
+```
