@@ -68,19 +68,43 @@ gh auth login
 ```
 Follow the prompts, selecting "GitHub.com", "HTTPS", and "Login with a web browser".
 
-## Learn git basics
+## Install Gemini CLI
 
-If you are completely new to git we recommend asking ChatGPT with the "study and learn" mode turned on to create a basic hands-on tutorial for you. A prompt similar to "Please put together a basic, hands-on tutorial for git and github that assumes no knowledge of git or the command line. I am a complete beginner. I use a Mac." may be useful. *Remember to turn on 'study and learn' mode.* With this mode turned on ChatGPT will gently guide you through learning git. Without it turned on you will get a wall of text. 
+Gemini CLI is Google's command-line AI tool. It requires Node.js version 20 or higher.
+
+1. **Install Node.js** (if you don't already have it):
+   - **Mac:** `brew install node`
+   - **Windows:** Download and install from [nodejs.org](https://nodejs.org/)
+
+2. **Install Gemini CLI** globally by running:
+   ```
+   npm install -g @google/gemini-cli
+   ```
+
+3. **Authenticate** by running `gemini` in your terminal and following the prompts to log in with your Google account.
+
+For more details, see the [Gemini CLI documentation](https://github.com/google-gemini/gemini-cli).
+
+## Create a local code folder
+
+Create a folder on your computer where all your local code repositories will live. We recommend creating a folder called `code` in your Documents folder. This folder doesn't have to be called `code` or in your Documents folder but it should probably be some new folder and, above all, don't put this on Dropbox. This keeps all your git repositories organized in one place.
+
+When you clone repositories (described in the pipeline setup section below), you should navigate to this folder first so that all your projects end up in the same location.
+
+# 4. Learn git basics
+
+If you are completely new to git we recommend asking ChatGPT with the "study and learn" mode turned on to create a basic hands-on tutorial for you. A prompt similar to "Please put together a basic, hands-on tutorial for git and github that assumes no knowledge of git or the command line. I am a complete beginner. I use a Mac." may be useful. *Remember to turn on 'study and learn' mode.* With this mode turned on ChatGPT will gently guide you through learning git. Without it turned on you will get a wall of text.
 
 
 If you prefer self-directed resources, we also recommend:
+- [Git Tutorial for Beginners - Learn Git in 1 Hour (YouTube)](https://www.youtube.com/watch?v=8JJ101D3knE) - Excellent beginner-friendly video tutorial by Programming with Mosh
 - [Git and GitHub Introduction by Sid](https://docs.google.com/presentation/d/1C-TI60Mhdp25N2Qre1sCUA477hPKp4XcCOLHC4blF50/edit?usp=sharing) - IDinsight slide deck covering the basics
-- [Git intro by Mico](https://docs.google.com/presentation/d/17dK4rbVGmkRe2k1R4ZtA_3BWTBjdT1yZl29HixR9fF0/edit?slide=id.g255e0a95d93_0_193#slide=id.g255e0a95d93_0_193) - An intro slide created by Mico. 
+- [Git intro by Mico](https://docs.google.com/presentation/d/17dK4rbVGmkRe2k1R4ZtA_3BWTBjdT1yZl29HixR9fF0/edit?slide=id.g255e0a95d93_0_193#slide=id.g255e0a95d93_0_193) - An intro slide created by Mico.
 - [GitHub's Git Handbook](https://guides.github.com/introduction/git-handbook/) - A 10-minute read covering the basics
 - [Git Basics Video](https://git-scm.com/video/what-is-version-control) - Short video introduction
 - Practice with [Learn Git Branching](https://learngitbranching.js.org/) - An interactive tutorial
 
-Git is pretty complicated and allows you to do a lot. Don't attempt to learn it all in one go. Instead, we recommend starting with the basic concepts and commands listed below. These are enough to get you up and running with git. 
+Git is pretty complicated and allows you to do a lot. Don't attempt to learn it all in one go. Instead, we recommend starting with the basic concepts and commands listed below. These are enough to get you up and running with git.
 
 **Key basic concepts to understand:**
 
@@ -116,7 +140,7 @@ The flow of changes: **Working Directory** → `git add` → **Staging Area** �
 
 
 
-# 4. Pipeline set up tasks
+# 5. Pipeline set up tasks
 The following tasks must be performed once for each new data cleaning and analysis pipeline. 
 
 1.  **Create a new repo from this template** -
@@ -127,7 +151,7 @@ Go to the repo [webpage](https://github.com/IDinsight/data_cleaning_and_analysis
    ```
    Replace `<repo-name>` with the name of the repository you created. This creates a local copy of the repository on your computer.
 
-3. **Add symlink for Dropbox data folder** - Since data lives on Dropbox but code is managed by git, we use a symbolic link (symlink) to connect them. This lets your do files reference a `Data` folder that actually points to the Dropbox location.
+3. **Add symlink for Dropbox data folder** - Since data lives on Dropbox but code is managed by git, we use a symbolic link (symlink) to connect them. This lets your do files reference a `Data` folder that actually points to the Dropbox location and makes managing path names easier. 
 
    **Mac:**
    ```
@@ -143,7 +167,7 @@ Go to the repo [webpage](https://github.com/IDinsight/data_cleaning_and_analysis
 
    Replace the paths with your actual Dropbox data folder location. The symlink (`Data`) is already in `.gitignore` so it won't be tracked by git.
 
-# 5. Recommended git workflow
+# 6. Recommended git workflow
 
 We recommend using the **feature branch workflow**. This means:
 - The `main` branch always contains working, reviewed code
@@ -243,7 +267,7 @@ feature          ●────●────●────●─────
 - **Don't commit data**: Only commit code files. Data should stay on Dropbox.
 - **Ask for help**: Git can be confusing at first. Don't hesitate to ask a colleague if you get stuck.
 
-# 6. Troubleshooting
+# 7. Troubleshooting
 
 ## Git opened a text editor (nano, vim, etc.) and I don't know how to exit
 
