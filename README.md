@@ -151,21 +151,33 @@ Go to the repo [webpage](https://github.com/IDinsight/data_cleaning_and_analysis
    ```
    Replace `<repo-name>` with the name of the repository you created. This creates a local copy of the repository on your computer.
 
-3. **Add symlink for Dropbox data folder** - Since data lives on Dropbox but code is managed by git, we use a symbolic link (symlink) to connect them. This lets your do files reference a `Data` folder that actually points to the Dropbox location and makes managing path names easier. 
+3. **Add symlinks for Dropbox folders** - Since data and research design documents live on Dropbox but code is managed by git, we use symbolic links (symlinks) to connect them. This lets your do files reference a `Data` folder that actually points to the Dropbox location and makes managing path names easier. We recommend creating at least two symlinked folders: one for data and one for research design. Providing access to research design documents will help your AI coding be more efficient. For example, if your research design document describes how to construct sampling weights, the AI agent can read the equations directly and (try to) implement them in code.
 
    **Mac:**
    ```
    cd <repo-name>
    ln -s "/Users/<username>/Dropbox/<project-folder>/Data" Data
+   ln -s "/Users/<username>/Dropbox/<project-folder>/Research Design" "Research Design"
    ```
 
    **Windows (run as Administrator):**
    ```
    cd <repo-name>
    mklink /D Data "C:\Users\<username>\Dropbox\<project-folder>\Data"
+   mklink /D "Research Design" "C:\Users\<username>\Dropbox\<project-folder>\Research Design"
    ```
 
-   Replace the paths with your actual Dropbox data folder location. The symlink (`Data`) is already in `.gitignore` so it won't be tracked by git.
+   Replace the paths with your actual Dropbox folder locations. Both symlinks (`Data` and `Research Design`) are already in `.gitignore` so they won't be tracked by git.
+
+4. **Prevent direct pushes to main** - To enforce the feature branch workflow, add a branch protection rule on GitHub that prevents anyone from pushing directly to `main`.
+
+   1. Go to your repository on GitHub and click **Settings** > **Branches**.
+   2. Click **Add classic branch protection rule** 
+   3. Under **Branch name pattern**, enter `main`.
+   4. Check **Require a pull request before merging**.
+   5. Click **Create** (or **Save changes**).
+
+   This ensures all changes to `main` must go through a pull request, so no one can accidentally push directly to the main branch. This only needs to be set up once per repository and applies to all team members automatically.
 
 # 6. Recommended git workflow
 

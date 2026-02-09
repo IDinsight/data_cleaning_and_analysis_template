@@ -1,5 +1,6 @@
-# Data folder (symlink to Dropbox)
+# Symlinks to Dropbox
 Data/
+Research Design/
 
 # Data files
 *.csv
