@@ -1,9 +1,4 @@
----
-title: "Introduction to Sampling for Household Surveys"
-format: revealjs
----
-
-# Workshop: Git, GitHub, and Gemini CLI
+# Git, GitHub, and Gemini CLI Workshop
 
 ## Overview
 
