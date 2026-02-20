@@ -49,7 +49,7 @@ The following tasks must be performed once prior to using this template.  You on
 
 ## Create a GitHub account and get added to the IDinsight organization
 
-1. Go to [github.com](https://github.com) and create a free account if you don't already have one.
+1. Go to [github.com](https://github.com) and create a free account if you don't already have one. I recommend using your personal email address to create this account though you can also use your IDinsight account if you prefer. 
 2. Set up two-factor authentication (2FA) on your GitHub account. Go to Settings > Password and authentication > Enable two-factor authentication. This is required for the IDinsight organization.
 3. Ask Eric to add your personal github account to the IDinsight github organization account
 
