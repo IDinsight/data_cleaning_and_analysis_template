@@ -85,6 +85,17 @@ Gemini CLI is Google's command-line AI tool. It requires Node.js version 20 or h
 
 For more details, see the [Gemini CLI documentation](https://github.com/google-gemini/gemini-cli).
 
+## Install and set up VS Code (optional but recommended)
+
+VS Code is a free code editor that makes working with git much easier. It provides a visual interface for staging, committing, and resolving merge conflicts, and it has excellent extensions for Stata, R, and Python.
+
+1. Download and install [VS Code](https://code.visualstudio.com/).
+2. Open VS Code and install useful extensions by clicking the Extensions icon in the left sidebar (or pressing `Ctrl+Shift+X` on Windows / `Cmd+Shift+X` on Mac):
+   - **Stata Enhanced** (by Kyle Barron) - Syntax highlighting for Stata do files
+   - **stataRun** (by Yeaoh Media) - Lets you run Stata do files directly from VS Code
+
+VS Code's built-in Source Control panel (the branch icon in the left sidebar) lets you stage files, write commit messages, and push/pull without using the command line. This can be helpful while you're still learning git commands.
+
 ## Create a local code folder
 
 Create a folder on your computer where all your local code repositories will live. We recommend creating a folder called `code` in your Documents folder. This folder doesn't have to be called `code` or in your Documents folder but it should probably be some new folder and, above all, don't put this on Dropbox. This keeps all your git repositories organized in one place.

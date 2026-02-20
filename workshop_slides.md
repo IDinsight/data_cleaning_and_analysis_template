@@ -107,10 +107,27 @@ If you haven't already done so, please complete the following tasks. For more de
 - Install **Git** and **GitHub CLI** (`gh`) on your machine.
 - Create/configure your **GitHub account** (including 2FA), get added to the org, and run `gh auth login`.
 - Configure **Git identity** (`user.name` and `user.email`), install **Gemini CLI**, and create a local `code` folder for repositories.
+- (Optional but recommended) Install **VS Code**
 
 ---
 
-## Step 1: Clone the Repo
+## Step 1: Terminal Crash Course
+
+A terminal lets you interact with your computer by typing commands instead of clicking.
+
+| Command | What it does |
+|---|---|
+| `pwd` | Print working directory — shows where you are |
+| `ls` | List files and folders in the current directory |
+| `cd <folder>` | Change directory — move into a folder |
+| `cd ..` | Move up one level |
+| `cd ~` | Go to your home directory |
+
+**Try it now:** Open Terminal (Mac) or Git Bash (Windows), then run `pwd`, `ls`, and `cd Documents/code`.
+
+---
+
+## Step 2: Clone the Repo
 
 **Go to Your Code Folder First:**
 
@@ -125,6 +142,8 @@ pwd
 git clone https://github.com/dougj892/workshop_test_repo
 ```
 
+> **VS Code alternative:** Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`) → "Git: Clone" → paste the URL → choose your `Documents/code` folder.
+
 **cd into the Repository Folder:**
 
 ```bash
@@ -132,9 +151,11 @@ cd workshop_test_repo
 pwd
 ```
 
+> **VS Code alternative:** After cloning, VS Code will ask if you want to open the cloned repository. Click "Open".
+
 ---
 
-## Step 2: Build and Ship a Small Feature
+## Step 3: Build and Ship a Small Feature
 
 **1. Create and Switch to a New Branch:**
 
@@ -144,13 +165,15 @@ git switch -c test_name
 
 Replace `name` with your name.
 
+> **VS Code alternative:** Click the branch name in the bottom-left corner → "Create new branch…" → type `test_name`.
+
 **2. Make a Change:**
 
 Add some content to the top of `README.md`. It doesn't matter what you add, but you should add it to the top of the file. (This will ensure that this change conflicts with other participants' changes.)
 
 ---
 
-## Step 2 (continued)
+## Step 3 (continued)
 
 **3. Stage and Commit the Change:**
 
@@ -161,6 +184,12 @@ git commit -m "feat: Add new greeting message"
 
 `git add .` stages your file changes. `git commit` saves that staged snapshot to your local Git history with a message.
 
+> **VS Code alternative:** In the Source Control panel (branch icon in left sidebar), click **+** to stage files, type a message, and click **Commit**.
+
+---
+
+## Step 3 (continued)
+
 **4. Push the Branch to GitHub:**
 
 ```bash
@@ -169,13 +198,15 @@ git push -u origin test_name
 
 This uploads your branch to GitHub. After this, you can just use `git push`.
 
----
-
-## Step 2 (continued)
+> **VS Code alternative:** Click **"Publish Branch"** in the Source Control panel. For subsequent pushes, click **"Sync Changes"**.
 
 **5. Create a Pull Request:**
 
 Navigate to the GitHub repository in your browser. GitHub will usually prompt you to create a pull request from your newly pushed branch. Fill in the details and create the PR.
+
+---
+
+## Step 3 (continued)
 
 **6. Review and Merge (Doug to do this):**
 
@@ -183,7 +214,7 @@ I will review the PR, potentially suggest changes, and then approve and merge it
 
 ---
 
-## Step 3: Handling a Merge Conflict
+## Step 4: Handling a Merge Conflict
 
 When we tried to merge in the second pull request we got an error saying that the branch has conflicts that must be resolved. This is because the second participant was updating the same section of `README.md` as the first participant.
 
@@ -194,15 +225,23 @@ git switch main
 git pull origin main
 ```
 
+> **VS Code alternative:** Click the branch name in the bottom-left → select "main". Then click **Sync Changes** (circular arrows in the status bar).
+
+---
+
+## Step 4 (continued)
+
 **2. Switch Back to Feature Branch:**
 
 ```bash
 git switch test_name
 ```
 
+> **VS Code alternative:** Click the branch name in the bottom-left → select your feature branch.
+
 ---
 
-## Step 3 (continued)
+## Step 4 (continued)
 
 **3. Merge `main` into Your Feature Branch:**
 
@@ -210,10 +249,16 @@ git switch test_name
 git merge main
 ```
 
-If you get a conflict:
+> **VS Code alternative:** Command Palette → "Git: Merge Branch…" → select "main". VS Code highlights conflicts with colored blocks and buttons: **Accept Current Change**, **Accept Incoming Change**, **Accept Both Changes**.
+
+If you get a conflict on the command line:
 - Run `git status` to see which files are conflicted
 - Open each conflicted file and find the conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`)
 - Decide what final text to keep, delete all marker lines, and save
+
+---
+
+## Step 4 (continued)
 
 **4. Stage and Commit the Resolved Conflicts:**
 
@@ -222,7 +267,11 @@ git add .
 git commit -m "Merge main into feature branch and resolve conflicts"
 ```
 
+> **VS Code alternative:** In the Source Control panel, click **+** to stage resolved files, type a message, and click **Commit**.
+
 **5. Push:** `git push`
+
+> **VS Code alternative:** Click **Sync Changes** in the status bar.
 
 ---
 
